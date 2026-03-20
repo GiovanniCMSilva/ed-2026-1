@@ -1,30 +1,27 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+float IMC(float altura, float peso){
+    if(altura==0 || peso==0){
+        return 0;
+    }
+    return peso/(altura*altura);
+}
 int main(){
-    float altura;
-    float peso;
-    float imc;
-    while(1){
-        printf("Insira a sua altura (m): ");
-        scanf("%f",&altura);
-        printf("Agora, insira o seu peso (Kg): ");
-        scanf("%f",&peso);
-        if(altura!=0 && peso!=0){
-            break;
-        }
-        printf("Altura e/ou peso nao foram inseridos. Por favor, insira os dados.\n");
-    }
-    printf("==========================================\n");
-    imc = peso/(altura*altura);
-    if(imc<18.5){
-        printf("Voce esta abaixo do peso.");
-    } else if(imc<25 && imc>=18.5){
-        printf("Voce esta com peso normal.");
-    } else if(imc<30 && imc>=25){
-        printf("Voce esta com sobrepeso.");
-    } else{
-        printf("Voce esta obeso.");
-    }
-    return 0; 
+    float imc = 0.0f;
+    imc = IMC(0.0f, 0.0f);
+    printf("Altura = 0, Peso = 0, IMC = %.2f => %i\n", imc, imc==0);
+    imc = IMC(0.0f, 50.0f);
+    printf("Altura = 0, Peso = 50, IMC = %.2f => %i\n", imc, imc==0);
+    imc = IMC(1.75f, 0.0f);
+    printf("Altura = 1.75, Peso = 0, IMC = %.2f => %i\n", imc, imc==0);
+    imc = IMC(1.75f, 50.0f);
+    printf("Altura = 1.75, Peso = 50, IMC = %.2f => %i\n", imc, imc<18.5f);
+    imc = IMC(1.75f, 65.0f);
+    printf("Altura = 1.75, Peso = 65, IMC = %.2f => %i\n", imc, imc>=18.5f && imc<25);
+    imc = IMC(1.75f, 85.0f);
+    printf("Altura = 1.75, Peso = 85, IMC = %.2f => %i\n", imc, imc>=25 && imc<30);
+    imc = IMC(1.75f, 95.0f);
+    printf("Altura = 1.75, Peso = 95, IMC = %.2f => %i\n", imc, imc>=30);
+    return 0;
 }
