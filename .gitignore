@@ -53,3 +53,8 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# Pastas que não devem ser versionadas
+.vscode/
+aulas/
+praticas/pratica01/calcula_tempo.c
