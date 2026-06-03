@@ -2,8 +2,7 @@
 #define LISTA_LINEAR_H
 
 typedef struct No {
-    int n;
-    struct No *ant;
+    int dado;
     struct No *prox;
 } No;
 
@@ -16,8 +15,9 @@ typedef struct {
 Lista *listaCriar();
 void listaDestruir(Lista *lista);
 void listaInserir(Lista *lista, int n);
-void listaRemover(Lista *lista, int n);
+int listaEstaVazia(Lista *lista);
 No *listaBuscar(Lista *lista, int n);
-int listaVazia(Lista *lista);
+void listaRemover(Lista *lista, int n);
+void listaExibir (Lista *lista);
 
 #endif

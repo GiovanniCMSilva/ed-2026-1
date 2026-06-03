@@ -2,53 +2,57 @@
 #include "listaLinear.h"
 
 int main() {
-    Lista *l = listaCriar();
+    Lista *lista = listaCriar();
 
-    listaInserir(l, 10);
-    listaInserir(l, 20);
-    listaInserir(l, 40);
-    listaInserir(l, 80);
+    listaInserir(lista, 10);
+    listaInserir(lista, 20);
+    listaInserir(lista, 30);
+    listaInserir(lista, 40);
 
-    printf("Lista criada:\n");
-    No *no = l->primeiro;
-    while (no != NULL) {
-        printf("%d -> ", no->n);
-        no = no->prox;
+    printf("Lista atual: ");
+    listaExibir(lista);
+
+    No *b = listaBuscar(lista, 20);
+    if (b != NULL){
+        printf("Encontrado: %d\n", b->dado);
     }
-    printf("\n");
-
-    No *b = listaBuscar(l, 20);
-    if (b != NULL)
-        printf("Foi encontrado: %d\n", b->n);
-    else
-        printf("Nao foi encontrado\n");
-
-    printf("Removendo 40...\n");
-    listaRemover(l, 40);
-
-    no = l->primeiro;
-    while (no != NULL) {
-        printf("%d -> ", no->n);
-        no = no->prox;
+    else{
+        printf("Nao encontrado\n");
     }
-    printf("\n");
 
-    printf("Removendo 10...\n");
-    listaRemover(l, 10);
+    printf("Removendo 30\n");
+    listaRemover(lista, 30);
+    listaExibir(lista);
 
-    no = l->primeiro;
-    while (no != NULL) {
-        printf("%d -> ", no->n);
-        no = no->prox;
+     No *c = listaBuscar(lista, 30);
+    if (c != NULL){
+        printf("Encontrado: %d\n", c->dado);
     }
-    printf("\n");
+    else{
+        printf("Nao encontrado\n");
+    }
 
-    listaDestruir(l);
+    printf("Removendo 10 (primeiro)\n");
+    listaRemover(lista, 10);
+    listaExibir(lista);
 
-    if (listaVazia(l)){
-        printf("Lista vazia\n");
-    } else{
-        printf("Lista nao esta vazia\n");
+    printf("Removendo 40 (ultimo)\n");
+    listaRemover(lista, 40);
+    listaExibir(lista);
+
+    if (listaEstaVazia(lista)) {
+        printf("A lista esta vazia\n");
+    } else {
+        printf("A lista nao esta vazia\n");
+    }
+
+    printf("Destruindo lista\n");
+    listaDestruir(lista);
+
+    if (listaEstaVazia(lista)) {
+        printf("A lista esta vazia\n");
+    } else {
+        printf("A lista nao esta vazia\n");
     }
 
     return 0;
